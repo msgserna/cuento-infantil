@@ -24,6 +24,8 @@
 .DS_Store
 *.pem
 .claude/
+nul
+EFFECTS_AND_AUDIO_GUIDE.md
 
 # debug
 npm-debug.log*
