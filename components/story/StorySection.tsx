@@ -1,7 +1,7 @@
 // components/story/StorySection.tsx
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import type { StorySection as StorySectionType } from "@/lib/story/sections";
@@ -24,9 +24,21 @@ export function StorySection({ section, className }: Props) {
   const isCover = section.index === 0;
   const [started, setStarted] = useState(false);
 
+  // Block scroll while cover overlay is visible
+  useEffect(() => {
+    if (!isCover || started) return;
+    const prevent = (e: Event) => e.preventDefault();
+    window.addEventListener("wheel", prevent, { passive: false, capture: true });
+    window.addEventListener("touchmove", prevent, { passive: false, capture: true });
+    return () => {
+      window.removeEventListener("wheel", prevent, { capture: true });
+      window.removeEventListener("touchmove", prevent, { capture: true });
+    };
+  }, [isCover, started]);
+
   const handleStart = useCallback(async () => {
     await audioManager.init();
-    audioManager.play("/narration/intro.mp3", 1);
+    audioManager.playNarration("/narration/intro.mp3", 1);
     setStarted(true);
   }, []);
 

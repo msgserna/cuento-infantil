@@ -17,7 +17,7 @@ export function StoryEnding() {
       ([entry]) => {
         if (entry.isIntersecting && !outroPlayedRef.current) {
           outroPlayedRef.current = true;
-          audioManager.play("/narration/outro.mp3", 1);
+          audioManager.playNarration("/narration/outro.mp3", 1);
         }
       },
       { threshold: 0.5 }
@@ -28,22 +28,7 @@ export function StoryEnding() {
   }, []);
 
   const scrollToTop = useCallback(() => {
-    const lenis = (
-      window as unknown as {
-        __lenis?: {
-          scrollTo: (
-            target: number | string | HTMLElement,
-            opts?: Record<string, unknown>
-          ) => void;
-        };
-      }
-    ).__lenis;
-
-    if (lenis) {
-      lenis.scrollTo("#s01", { duration: 2.5 });
-    } else {
-      document.getElementById("s01")?.scrollIntoView({ behavior: "smooth" });
-    }
+    window.location.reload();
   }, []);
 
   return (

@@ -86,7 +86,7 @@ export function PinnedSection({
       const nextSrc = frames[frameIndex + 1]?.narrationSrc;
       if (nextSrc) audioManager.loadSound(nextSrc);
 
-      audioManager.play(src, 1).then((node) => {
+      audioManager.playNarration(src, 1).then((node) => {
         if (!node) {
           unlockScroll();
           return;
@@ -173,6 +173,16 @@ export function PinnedSection({
               duration: { min: 0.4, max: 1 },
               delay: 0.2,
               ease: "power2.inOut",
+            },
+            onLeave: (self) => {
+              // Snap to the exact end of this section (= start of next section)
+              const lenis = getLenis();
+              if (lenis) lenis.scrollTo(self.end, { duration: 0.3, force: true });
+            },
+            onEnterBack: (self) => {
+              // Snap back to just inside this section's last frame
+              const lenis = getLenis();
+              if (lenis) lenis.scrollTo(self.end - 2, { duration: 0.3, force: true });
             },
             onSnapComplete: (self) => {
               // Fires after snap animation ends — scroll is settled, safe to lock.

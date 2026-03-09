@@ -1,16 +1,13 @@
-/**
- * Controles de audio del usuario
- * Permite que el usuario ajuste el volumen maestro del sitio
- */
-
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { audioManager } from "@/lib/audio/audioManager";
 
 export function useAudioControls() {
   const [masterVolume, setMasterVolume] = useState(0.6);
   const [isMuted, setIsMuted] = useState(false);
+  const [isNarratorMuted, setIsNarratorMuted] = useState(false);
+  const prevNarratorVolume = useRef(1);
 
   const handleVolumeChange = (volume: number) => {
     setMasterVolume(volume);
@@ -27,10 +24,23 @@ export function useAudioControls() {
     }
   };
 
+  const toggleNarratorMute = () => {
+    if (isNarratorMuted) {
+      audioManager.setNarratorVolume(prevNarratorVolume.current);
+      setIsNarratorMuted(false);
+    } else {
+      prevNarratorVolume.current = audioManager.getNarratorVolume();
+      audioManager.setNarratorVolume(0);
+      setIsNarratorMuted(true);
+    }
+  };
+
   return {
     masterVolume,
     isMuted,
+    isNarratorMuted,
     handleVolumeChange,
     toggleMute,
+    toggleNarratorMute,
   };
 }
