@@ -15,7 +15,7 @@ type Props = {
 };
 
 const getLenis = () =>
-  (window as unknown as { __lenis?: { stop: () => void; start: () => void } })
+  (window as unknown as { __lenis?: { stop: () => void; start: () => void; scrollTo: (target: number, opts?: Record<string, unknown>) => void } })
     .__lenis;
 
 export function PinnedSection({
