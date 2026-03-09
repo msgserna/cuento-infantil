@@ -24,15 +24,38 @@ export function StorySection({ section, className }: Props) {
   const isCover = section.index === 0;
   const [started, setStarted] = useState(false);
 
-  // Block scroll while cover overlay is visible
+  // Block ALL scroll while cover overlay is visible
   useEffect(() => {
     if (!isCover || started) return;
-    const prevent = (e: Event) => e.preventDefault();
+
+    const SCROLL_KEYS = ["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "];
+    const prevent = (e: Event) => { e.preventDefault(); e.stopPropagation(); };
+    const preventKey = (e: KeyboardEvent) => { if (SCROLL_KEYS.includes(e.key)) e.preventDefault(); };
+
+    // Block mouse wheel and touch
     window.addEventListener("wheel", prevent, { passive: false, capture: true });
     window.addEventListener("touchmove", prevent, { passive: false, capture: true });
+    window.addEventListener("touchstart", prevent, { passive: false, capture: true });
+    // Block keyboard scroll
+    window.addEventListener("keydown", preventKey, { capture: true });
+
+    // Stop Lenis — retry until available
+    let retryId: ReturnType<typeof setTimeout>;
+    const stopLenis = () => {
+      const lenis = (window as unknown as { __lenis?: { stop: () => void } }).__lenis;
+      if (lenis) { lenis.stop(); }
+      else { retryId = setTimeout(stopLenis, 50); }
+    };
+    stopLenis();
+
     return () => {
       window.removeEventListener("wheel", prevent, { capture: true });
       window.removeEventListener("touchmove", prevent, { capture: true });
+      window.removeEventListener("touchstart", prevent, { capture: true });
+      window.removeEventListener("keydown", preventKey, { capture: true });
+      clearTimeout(retryId);
+      const lenis = (window as unknown as { __lenis?: { start: () => void } }).__lenis;
+      if (lenis) lenis.start();
     };
   }, [isCover, started]);
 
