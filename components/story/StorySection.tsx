@@ -35,7 +35,7 @@ export function StorySection({ section, className }: Props) {
       id={section.id}
       data-story-section
       data-index={section.index}
-      className={cn("relative h-svh w-full overflow-hidden", className)}
+      className={cn("relative story-viewport w-full overflow-hidden", className)}
       aria-label={`Sección ${section.index}: ${section.title}`}
     >
       {/* Background: video si existe, sino imagen */}

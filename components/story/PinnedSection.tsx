@@ -155,24 +155,20 @@ export function PinnedSection({
               delay: 0.2,
               ease: "power2.inOut",
             },
-            onUpdate: () => {
-              // Detect active frame, lock scroll and play narration
-              for (let i = 0; i < 3; i++) {
-                const f = frameRefs.current[i];
-                if (!f) continue;
-                const opacity = parseFloat(f.style.opacity || "0");
-                if (
-                  opacity > 0.9 &&
-                  i > maxFrameReachedRef.current &&
-                  !scrollLockedRef.current
-                ) {
-                  maxFrameReachedRef.current = i;
-                  lockForNarration(i);
-                  break;
-                }
-              }
+            onSnapComplete: (self) => {
+              // Snap has finished — image is now fully centered. Safe to lock and narrate.
+              const progress = self.progress;
+              let frameIndex = 0;
+              if (progress >= 0.7) frameIndex = 2;
+              else if (progress >= 0.25) frameIndex = 1;
 
-              // Audio triggers
+              if (frameIndex > maxFrameReachedRef.current && !scrollLockedRef.current) {
+                maxFrameReachedRef.current = frameIndex;
+                lockForNarration(frameIndex);
+              }
+            },
+            onUpdate: () => {
+              // Audio triggers only (no narration logic here)
               const progress = tl.scrollTrigger?.progress ?? 0;
               if (
                 progress > 0.15 &&
@@ -267,7 +263,7 @@ export function PinnedSection({
       id={section.id}
       data-story-section
       data-index={section.index}
-      className={cn("relative h-svh w-full overflow-hidden", className)}
+      className={cn("relative story-viewport w-full overflow-hidden", className)}
       aria-label={`Sección ${section.index}: ${section.title}`}
     >
       {/* Frames apilados */}

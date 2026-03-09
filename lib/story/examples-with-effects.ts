@@ -16,9 +16,9 @@ export const S02_WITH_EFFECTS: StorySection = {
   title: "Pobreza y plan",
   frames: [
     {
-      imageSrc: "/story/hg/s02-a.png",
+      imageSrc: "/story/hg/s02-a.webp",
       // Opcional: si tienes s02-a.mp4, descomenta la línea siguiente
-      // videoSrc: "/story/hg/s02-a.mp4",
+      // videoSrc: "/story/hg/s02-a.webm",
       
       // ✨ Efecto visual: luz oscura, como si fuera noche/tristeza
       effects: {
@@ -38,7 +38,7 @@ export const S02_WITH_EFFECTS: StorySection = {
     },
 
     {
-      imageSrc: "/story/hg/s02-b.png",
+      imageSrc: "/story/hg/s02-b.webp",
       effects: {
         lightColor: "#1a1a1a",
         lightIntensity: 0.15,
@@ -57,7 +57,7 @@ export const S02_WITH_EFFECTS: StorySection = {
     },
 
     {
-      imageSrc: "/story/hg/s02-c.png",
+      imageSrc: "/story/hg/s02-c.webp",
       effects: {
         lightColor: "#1a1a1a",
         lightIntensity: 0.15,
@@ -85,7 +85,7 @@ export const S03_LUNA: StorySection = {
   title: "Piedrecitas de luna",
   frames: [
     {
-      imageSrc: "/story/hg/s03-a.png",
+      imageSrc: "/story/hg/s03-a.webp",
       effects: {
         lightColor: "#4a90e2", // Azul de luna
         lightIntensity: 0.35,
@@ -102,7 +102,7 @@ export const S03_LUNA: StorySection = {
     },
 
     {
-      imageSrc: "/story/hg/s03-b.png",
+      imageSrc: "/story/hg/s03-b.webp",
       effects: {
         lightColor: "#4a90e2",
         lightIntensity: 0.4,
@@ -118,7 +118,7 @@ export const S03_LUNA: StorySection = {
     },
 
     {
-      imageSrc: "/story/hg/s03-c.png",
+      imageSrc: "/story/hg/s03-c.webp",
       effects: {
         lightColor: "#4a90e2",
         lightIntensity: 0.3,
@@ -145,7 +145,7 @@ export const WITCH_HOUSE: StorySection = {
   title: "La casa de caramelo",
   frames: [
     {
-      imageSrc: "/story/hg/s08-a.png",
+      imageSrc: "/story/hg/s08-a.webp",
       effects: {
         lightColor: "#ff6b00", // Naranja del fuego
         lightIntensity: 0.45,
@@ -161,7 +161,7 @@ export const WITCH_HOUSE: StorySection = {
     },
 
     {
-      imageSrc: "/story/hg/s08-b.png",
+      imageSrc: "/story/hg/s08-b.webp",
       effects: {
         lightColor: "#ff6b00",
         lightIntensity: 0.5,
@@ -177,7 +177,7 @@ export const WITCH_HOUSE: StorySection = {
     },
 
     {
-      imageSrc: "/story/hg/s08-c.png",
+      imageSrc: "/story/hg/s08-c.webp",
       effects: {
         lightColor: "#ff6b00",
         lightIntensity: 0.55,
@@ -203,7 +203,7 @@ export const FOREST_ESCAPE: StorySection = {
   title: "En el bosque",
   frames: [
     {
-      imageSrc: "/story/hg/s04-a.png",
+      imageSrc: "/story/hg/s04-a.webp",
       effects: {
         lightColor: "#2d5016", // Verde oscuro del bosque
         lightIntensity: 0.3,
@@ -219,7 +219,7 @@ export const FOREST_ESCAPE: StorySection = {
     },
 
     {
-      imageSrc: "/story/hg/s04-b.png",
+      imageSrc: "/story/hg/s04-b.webp",
       effects: {
         lightColor: "#2d5016",
         lightIntensity: 0.25,
@@ -235,7 +235,7 @@ export const FOREST_ESCAPE: StorySection = {
     },
 
     {
-      imageSrc: "/story/hg/s04-c.png",
+      imageSrc: "/story/hg/s04-c.webp",
       effects: {
         lightColor: "#2d5016",
         lightIntensity: 0.35,

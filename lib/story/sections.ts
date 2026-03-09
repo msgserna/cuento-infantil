@@ -62,8 +62,8 @@ export const STORY_SECTIONS: StorySection[] = [
     title: "Hänsel y Gretel",
     frames: [
       {
-        imageSrc: "/story/hg/s01-cover.png",
-        videoSrc: "/story/hg/portada.mp4",
+        imageSrc: "/story/hg/s01-cover.webp",
+        videoSrc: "/story/hg/portada.webm",
         dialogues: [
           { text: "Un cuento de los Hermanos Grimm" },
           { text: "Scroll para empezar" },
@@ -79,8 +79,8 @@ export const STORY_SECTIONS: StorySection[] = [
     title: "Pobreza y plan",
     frames: [
       {
-        imageSrc: "/story/hg/s02-a.png",
-        videoSrc: "/story/hg/s02-a.mp4",
+        imageSrc: "/story/hg/s02-a.webp",
+        videoSrc: "/story/hg/s02-a.webm",
         effects: {
           lightColor: "#1a1a2e",
           lightIntensity: 0.15,
@@ -95,7 +95,7 @@ export const STORY_SECTIONS: StorySection[] = [
         ],
       },
       {
-        imageSrc: "/story/hg/s02-b.png",
+        imageSrc: "/story/hg/s02-b.webp",
         effects: {
           lightColor: "#1a1a2e",
           lightIntensity: 0.2,
@@ -114,8 +114,8 @@ export const STORY_SECTIONS: StorySection[] = [
         ],
       },
       {
-        imageSrc: "/story/hg/s02-c.png",
-        videoSrc: "/story/hg/s02-c.mp4",
+        imageSrc: "/story/hg/s02-c.webp",
+        videoSrc: "/story/hg/s02-c.webm",
         effects: {
           lightColor: "#2a1a1a",
           lightIntensity: 0.2,
@@ -143,8 +143,8 @@ export const STORY_SECTIONS: StorySection[] = [
     title: "Piedrecitas de luna",
     frames: [
       {
-        imageSrc: "/story/hg/s03-a.png",
-        videoSrc: "/story/hg/s03-a.mp4",
+        imageSrc: "/story/hg/s03-a.webp",
+        videoSrc: "/story/hg/s03-a.webm",
         effects: {
           lightColor: "#4a90e2",
           lightIntensity: 0.3,
@@ -159,8 +159,8 @@ export const STORY_SECTIONS: StorySection[] = [
         ],
       },
       {
-        imageSrc: "/story/hg/s03-b.png",
-        videoSrc: "/story/hg/s03-b.mp4",
+        imageSrc: "/story/hg/s03-b.webp",
+        videoSrc: "/story/hg/s03-b.webm",
         effects: {
           lightColor: "#6ab0ff",
           lightIntensity: 0.4,
@@ -188,7 +188,7 @@ export const STORY_SECTIONS: StorySection[] = [
         ],
       },
       {
-        imageSrc: "/story/hg/s03-c.png",
+        imageSrc: "/story/hg/s03-c.webp",
         effects: {
           lightColor: "#4a90e2",
           lightIntensity: 0.35,
@@ -218,7 +218,7 @@ export const STORY_SECTIONS: StorySection[] = [
     title: "La hoguera",
     frames: [
       {
-        imageSrc: "/story/hg/s04-a.png",
+        imageSrc: "/story/hg/s04-a.webp",
         effects: {
           lightColor: "#2d5016",
           lightIntensity: 0.25,
@@ -235,7 +235,7 @@ export const STORY_SECTIONS: StorySection[] = [
         ],
       },
       {
-        imageSrc: "/story/hg/s04-b.png",
+        imageSrc: "/story/hg/s04-b.webp",
         effects: {
           lightColor: "#ff6b00",
           lightIntensity: 0.4,
@@ -251,8 +251,8 @@ export const STORY_SECTIONS: StorySection[] = [
         ],
       },
       {
-        imageSrc: "/story/hg/s04-c.png",
-        videoSrc: "/story/hg/s04-c.mp4",
+        imageSrc: "/story/hg/s04-c.webp",
+        videoSrc: "/story/hg/s04-c.webm",
         effects: {
           lightColor: "#ff8c33",
           lightIntensity: 0.35,
@@ -278,7 +278,7 @@ export const STORY_SECTIONS: StorySection[] = [
     title: "El camino de vuelta",
     frames: [
       {
-        imageSrc: "/story/hg/s05-a.png",
+        imageSrc: "/story/hg/s05-a.webp",
         effects: {
           lightColor: "#4a90e2",
           lightIntensity: 0.3,
@@ -296,7 +296,7 @@ export const STORY_SECTIONS: StorySection[] = [
         ],
       },
       {
-        imageSrc: "/story/hg/s05-b.png",
+        imageSrc: "/story/hg/s05-b.webp",
         effects: {
           lightColor: "#c0d8ff",
           lightIntensity: 0.45,
@@ -313,8 +313,8 @@ export const STORY_SECTIONS: StorySection[] = [
         ],
       },
       {
-        imageSrc: "/story/hg/s05-c.png",
-        videoSrc: "/story/hg/s05-c.mp4",
+        imageSrc: "/story/hg/s05-c.webp",
+        videoSrc: "/story/hg/s05-c.webm",
         effects: {
           lightColor: "#ffcc66",
           lightIntensity: 0.25,
@@ -339,7 +339,7 @@ export const STORY_SECTIONS: StorySection[] = [
     title: "Más lejos que nunca",
     frames: [
       {
-        imageSrc: "/story/hg/s06-a.png",
+        imageSrc: "/story/hg/s06-a.webp",
         effects: {
           lightColor: "#1a1a2e",
           lightIntensity: 0.2,
@@ -355,7 +355,7 @@ export const STORY_SECTIONS: StorySection[] = [
         ],
       },
       {
-        imageSrc: "/story/hg/s06-b.png",
+        imageSrc: "/story/hg/s06-b.webp",
         effects: {
           lightColor: "#1a1a2e",
           lightIntensity: 0.25,
@@ -374,7 +374,7 @@ export const STORY_SECTIONS: StorySection[] = [
         ],
       },
       {
-        imageSrc: "/story/hg/s06-c.png",
+        imageSrc: "/story/hg/s06-c.webp",
         effects: {
           lightColor: "#2d5016",
           lightIntensity: 0.2,
@@ -400,7 +400,7 @@ export const STORY_SECTIONS: StorySection[] = [
     title: "Sin rastro",
     frames: [
       {
-        imageSrc: "/story/hg/s07-a.png",
+        imageSrc: "/story/hg/s07-a.webp",
         effects: {
           lightColor: "#4a90e2",
           lightIntensity: 0.2,
@@ -416,7 +416,7 @@ export const STORY_SECTIONS: StorySection[] = [
         ],
       },
       {
-        imageSrc: "/story/hg/s07-b.png",
+        imageSrc: "/story/hg/s07-b.webp",
         effects: {
           lightColor: "#2d3a1a",
           lightIntensity: 0.2,
@@ -435,8 +435,8 @@ export const STORY_SECTIONS: StorySection[] = [
         ],
       },
       {
-        imageSrc: "/story/hg/s07-c.png",
-        videoSrc: "/story/hg/s07-c.mp4",
+        imageSrc: "/story/hg/s07-c.webp",
+        videoSrc: "/story/hg/s07-c.webm",
         effects: {
           lightColor: "#1a1a2e",
           lightIntensity: 0.25,
@@ -462,7 +462,7 @@ export const STORY_SECTIONS: StorySection[] = [
     title: "La casa imposible",
     frames: [
       {
-        imageSrc: "/story/hg/s08-a.png",
+        imageSrc: "/story/hg/s08-a.webp",
         effects: {
           lightColor: "#c0d8ff",
           lightIntensity: 0.3,
@@ -479,7 +479,7 @@ export const STORY_SECTIONS: StorySection[] = [
         ],
       },
       {
-        imageSrc: "/story/hg/s08-b.png",
+        imageSrc: "/story/hg/s08-b.webp",
         effects: {
           lightColor: "#ff9944",
           lightIntensity: 0.35,
@@ -494,7 +494,7 @@ export const STORY_SECTIONS: StorySection[] = [
         ],
       },
       {
-        imageSrc: "/story/hg/s08-c.png",
+        imageSrc: "/story/hg/s08-c.webp",
         effects: {
           lightColor: "#ff6b00",
           lightIntensity: 0.4,
@@ -524,7 +524,7 @@ export const STORY_SECTIONS: StorySection[] = [
     title: "La bruja",
     frames: [
       {
-        imageSrc: "/story/hg/s09-a.png",
+        imageSrc: "/story/hg/s09-a.webp",
         effects: {
           lightColor: "#44cc44",
           lightIntensity: 0.25,
@@ -544,7 +544,7 @@ export const STORY_SECTIONS: StorySection[] = [
         ],
       },
       {
-        imageSrc: "/story/hg/s09-b.png",
+        imageSrc: "/story/hg/s09-b.webp",
         effects: {
           lightColor: "#44cc44",
           lightIntensity: 0.3,
@@ -564,7 +564,7 @@ export const STORY_SECTIONS: StorySection[] = [
         ],
       },
       {
-        imageSrc: "/story/hg/s09-c.png",
+        imageSrc: "/story/hg/s09-c.webp",
         effects: {
           lightColor: "#cc2222",
           lightIntensity: 0.35,
@@ -591,7 +591,7 @@ export const STORY_SECTIONS: StorySection[] = [
     title: "¡Ahora!",
     frames: [
       {
-        imageSrc: "/story/hg/s10-a.png",
+        imageSrc: "/story/hg/s10-a.webp",
         effects: {
           lightColor: "#ff4400",
           lightIntensity: 0.5,
@@ -608,8 +608,8 @@ export const STORY_SECTIONS: StorySection[] = [
         ],
       },
       {
-        imageSrc: "/story/hg/s10-b.png",
-        videoSrc: "/story/hg/s10-b.mp4",
+        imageSrc: "/story/hg/s10-b.webp",
+        videoSrc: "/story/hg/s10-b.webm",
         effects: {
           lightColor: "#ffcc00",
           lightIntensity: 0.4,
@@ -626,7 +626,7 @@ export const STORY_SECTIONS: StorySection[] = [
         ],
       },
       {
-        imageSrc: "/story/hg/s10-c.png",
+        imageSrc: "/story/hg/s10-c.webp",
         effects: {
           lightColor: "#88ccff",
           lightIntensity: 0.3,
@@ -658,7 +658,7 @@ export const STORY_SECTIONS: StorySection[] = [
     title: "De vuelta a casa",
     frames: [
       {
-        imageSrc: "/story/hg/s11-a.png",
+        imageSrc: "/story/hg/s11-a.webp",
         effects: {
           lightColor: "#ff4400",
           lightIntensity: 0.4,
@@ -676,7 +676,7 @@ export const STORY_SECTIONS: StorySection[] = [
         ],
       },
       {
-        imageSrc: "/story/hg/s11-b.png",
+        imageSrc: "/story/hg/s11-b.webp",
         effects: {
           lightColor: "#ffcc66",
           lightIntensity: 0.35,
@@ -693,7 +693,7 @@ export const STORY_SECTIONS: StorySection[] = [
         ],
       },
       {
-        imageSrc: "/story/hg/s11-c.png",
+        imageSrc: "/story/hg/s11-c.webp",
         effects: {
           lightColor: "#ffaa33",
           lightIntensity: 0.4,

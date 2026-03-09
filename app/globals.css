@@ -135,6 +135,15 @@ html::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
 
+body {
+  overscroll-behavior-y: none;
+}
+
+.story-viewport {
+  height: 100dvh;
+  min-height: 100svh;
+}
+
 /* Animación de scroll indicator en portada */
 @keyframes scroll-bounce {
   0%, 100% {

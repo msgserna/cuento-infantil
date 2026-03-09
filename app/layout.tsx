@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     siteName: "Hänsel y Gretel — Cuento Interactivo",
     images: [
       {
-        url: "/story/hg/s01-cover.png",
+        url: "/story/hg/s01-cover.webp",
         width: 1200,
         height: 630,
         alt: "Portada de Hänsel y Gretel — Cuento Interactivo",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     title: "Hänsel y Gretel — Cuento Interactivo",
     description:
       "Descubre el clásico cuento de los Hermanos Grimm en una experiencia web interactiva.",
-    images: ["/story/hg/s01-cover.png"],
+    images: ["/story/hg/s01-cover.webp"],
   },
   robots: {
     index: true,
@@ -89,7 +89,7 @@ export default function RootLayout({
       "@type": "Audience",
       audienceType: "Children",
     },
-    image: "/story/hg/s01-cover.png",
+    image: "/story/hg/s01-cover.webp",
   };
 
   return (

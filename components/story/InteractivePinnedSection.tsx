@@ -365,6 +365,18 @@ export function InteractivePinnedSection({
                 progress: number;
               };
             },
+            onSnapComplete: (self) => {
+              // Snap has finished — image is now fully centered. Safe to lock and narrate.
+              const progress = self.progress;
+              let frameIndex = 0;
+              if (progress >= 0.7) frameIndex = 2;
+              else if (progress >= 0.25) frameIndex = 1;
+
+              if (frameIndex > maxFrameReachedRef.current && !scrollLockedRef.current) {
+                maxFrameReachedRef.current = frameIndex;
+                lockForFrame(frameIndex);
+              }
+            },
             onUpdate: (self) => {
               // Store latest ST reference
               scrollTriggerRef.current = self as unknown as {
@@ -373,7 +385,7 @@ export function InteractivePinnedSection({
                 progress: number;
               };
 
-              // Detect active frame by opacity
+              // Track visible frame for prompt visibility (no narration logic here)
               let bestFrame = 0;
               let bestOpacity = 0;
               for (let i = 0; i < 3; i++) {
@@ -383,15 +395,6 @@ export function InteractivePinnedSection({
                 if (opacity > bestOpacity) {
                   bestOpacity = opacity;
                   bestFrame = i;
-                }
-                if (
-                  opacity > 0.9 &&
-                  i > maxFrameReachedRef.current &&
-                  !scrollLockedRef.current
-                ) {
-                  maxFrameReachedRef.current = i;
-                  lockForFrame(i);
-                  break;
                 }
               }
               setVisibleFrame(bestFrame);
@@ -541,7 +544,7 @@ export function InteractivePinnedSection({
       id={section.id}
       data-story-section
       data-index={section.index}
-      className={cn("relative h-svh w-full overflow-hidden", className)}
+      className={cn("relative story-viewport w-full overflow-hidden", className)}
       aria-label={`Sección ${section.index}: ${section.title}`}
     >
       {/* Frames apilados */}

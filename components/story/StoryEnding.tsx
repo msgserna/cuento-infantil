@@ -47,7 +47,7 @@ export function StoryEnding() {
   }, []);
 
   return (
-    <section ref={rootRef} className="relative flex h-svh w-full flex-col items-center justify-center overflow-hidden bg-black px-6">
+    <section ref={rootRef} className="relative flex story-viewport w-full flex-col items-center justify-center overflow-hidden bg-black px-6">
       {/* Subtle radial gradient background */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(139,90,43,0.12)_0%,_transparent_70%)]" />
 

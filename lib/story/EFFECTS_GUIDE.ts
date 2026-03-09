@@ -2,7 +2,7 @@
  * INSTRUCCIONES PARA USAR LOS NUEVOS EFECTOS
  * 
  * 1. AGREGAR VIDEOS:
- *    - Frame con video: videoSrc: "/story/hg/s02-a.mp4"
+ *    - Frame con video: videoSrc: "/story/hg/s02-a.webm"
  *    - Si el video falla, automáticamente cae a la imagen en imageSrc
  * 
  * 2. AGREGAR EFECTOS VISUALES:
@@ -37,8 +37,8 @@ export const EFFECT_EXAMPLE = {
   title: "Piedrecitas de luna",
   frames: [
     {
-      imageSrc: "/story/hg/s03-a.png",
-      // videoSrc: "/story/hg/s03-a.mp4", // Opcional: si tienes video
+      imageSrc: "/story/hg/s03-a.webp",
+      // videoSrc: "/story/hg/s03-a.webm", // Opcional: si tienes video
       dialogues: [
         {
           text: "Los niños lo han oído todo. Gretel llora en silencio.",
@@ -54,7 +54,7 @@ export const EFFECT_EXAMPLE = {
       },
     },
     {
-      imageSrc: "/story/hg/s03-b.png",
+      imageSrc: "/story/hg/s03-b.webp",
       dialogues: [
         {
           text: "Con luna llena, Hänsel sale y recoge piedrecitas blancas.",
@@ -71,7 +71,7 @@ export const EFFECT_EXAMPLE = {
       },
     },
     {
-      imageSrc: "/story/hg/s03-c.png",
+      imageSrc: "/story/hg/s03-c.webp",
       dialogues: [
         {
           text: "Mañana seremos capaces de encontrar el camino de vuelta",
@@ -90,7 +90,7 @@ export const EFFECT_EXAMPLE = {
 export const WITCH_HOUSE_EXAMPLE = {
   frames: [
     {
-      imageSrc: "/story/hg/witch-house.png",
+      imageSrc: "/story/hg/witch-house.webp",
       effects: {
         lightColor: "#ff6b00", // Naranja del fuego
         lightIntensity: 0.5,
@@ -111,7 +111,7 @@ export const WITCH_HOUSE_EXAMPLE = {
 export const FOREST_EXAMPLE = {
   frames: [
     {
-      imageSrc: "/story/hg/forest.png",
+      imageSrc: "/story/hg/forest.webp",
       effects: {
         lightColor: "#2d5016", // Verde oscuro
         lightIntensity: 0.25,
