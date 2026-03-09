@@ -154,8 +154,7 @@ export const STORY_SECTIONS: StorySection[] = [
         audio: { soundFx: "/sounds/night-crickets.mp3", volume: 0.4 },
         narrationSrc: "/narration/s03-a.mp3",
         dialogues: [
-          { text: "Los niños no podían dormirse. Lo habían oído todo." },
-          { text: "Gretel lloraba en silencio." },
+          { text: "Los niños no podían dormirse. Lo habían oído todo. Gretel lloraba en silencio." },
         ],
       },
       {
@@ -171,10 +170,7 @@ export const STORY_SECTIONS: StorySection[] = [
         narrationSrc: "/narration/s03-b.mp3",
         dialogues: [
           {
-            text: "Era noche de luna llena. Las piedrecitas brillaban como si fueran de plata.",
-          },
-          {
-            text: "Hänsel se agachó y cogió cuantas le cabían en los bolsillos.",
+            text: "Era noche de luna llena. Las piedrecitas brillaban como si fueran de plata. Hänsel se agachó y cogió cuantas le cabían en los bolsillos.",
           },
         ],
         hotspots: [
@@ -228,10 +224,7 @@ export const STORY_SECTIONS: StorySection[] = [
         audio: { soundFx: "/sounds/forest-wind.mp3", volume: 0.4 },
         narrationSrc: "/narration/s04-a.mp3",
         dialogues: [
-          { text: "Al amanecer emprendieron la marcha." },
-          {
-            text: "Hänsel se detenía cada poco… para dejar caer una piedrecita blanca.",
-          },
+          { text: "Al amanecer emprendieron la marcha, Hänsel se detenía cada poco… para dejar caer una piedrecita blanca." },
         ],
       },
       {
@@ -263,9 +256,8 @@ export const STORY_SECTIONS: StorySection[] = [
         narrationSrc: "/narration/s04-c.mp3",
         dialogues: [
           {
-            text: "Oían los golpes del hacha… pero era solo una rama golpeando al viento.",
+            text: "Oían los golpes del hacha… pero era solo una rama golpeando al viento,y se quedaron dormidos.",
           },
-          { text: "Se quedaron dormidos." },
         ],
       },
     ],
@@ -307,9 +299,8 @@ export const STORY_SECTIONS: StorySection[] = [
         narrationSrc: "/narration/s05-b.mp3",
         dialogues: [
           {
-            text: "Las piedrecitas brillaban bajo la luna, señalando el camino de vuelta.",
+            text: "Las piedrecitas brillaban bajo la luna, señalando el camino de vuelta. Caminaron durante toda la noche.",
           },
-          { text: "Caminaron durante toda la noche." },
         ],
       },
       {
@@ -323,10 +314,7 @@ export const STORY_SECTIONS: StorySection[] = [
         audio: { soundFx: "/sounds/forest-birds.mp3", volume: 0.4 },
         narrationSrc: "/narration/s05-c.mp3",
         dialogues: [
-          { text: "Al amanecer, la casa apareció al fin." },
-          {
-            text: "El leñador se alegró muchísimo de verlos. Su conciencia no le había dejado dormir.",
-          },
+          { text: "Al amanecer, la casa apareció al fin, el leñador se alegró muchísimo de verlos. Su conciencia no le había dejado dormir." },
         ],
       },
     ],
@@ -409,10 +397,7 @@ export const STORY_SECTIONS: StorySection[] = [
         audio: { soundFx: "/sounds/night-crickets.mp3", volume: 0.3 },
         narrationSrc: "/narration/s07-a.mp3",
         dialogues: [
-          { text: "Cuando salió la luna… las migas habían desaparecido." },
-          {
-            text: "Los pájaros del bosque se las habían comido todas.",
-          },
+          { text: "Cuando salió la luna… las migas habían desaparecido. Los pájaros del bosque se las habían comido todas." },
         ],
       },
       {
@@ -427,10 +412,7 @@ export const STORY_SECTIONS: StorySection[] = [
         narrationSrc: "/narration/s07-b.mp3",
         dialogues: [
           {
-            text: "Anduvieron durante toda la noche y todo el día siguiente.",
-          },
-          {
-            text: "No pudieron encontrar un camino para salir del bosque.",
+            text: "Anduvieron durante toda la noche y todo el día siguiente. No pudieron encontrar un camino para salir del bosque.",
           },
         ],
       },
@@ -447,9 +429,8 @@ export const STORY_SECTIONS: StorySection[] = [
         narrationSrc: "/narration/s07-c.mp3",
         dialogues: [
           {
-            text: "Al final del día, sus piernas se negaban a sostenerlos.",
+            text: "Al final del día, sus piernas se negaban a sostenerlos. Se tumbaron debajo de un árbol y se durmieron.",
           },
-          { text: "Se tumbaron debajo de un árbol y se durmieron." },
         ],
       },
     ],
@@ -472,10 +453,7 @@ export const STORY_SECTIONS: StorySection[] = [
         audio: { soundFx: "/sounds/forest-birds.mp3", volume: 0.45 },
         narrationSrc: "/narration/s08-a.mp3",
         dialogues: [
-          { text: "Un precioso pájaro blanco se posó en una rama." },
-          {
-            text: "Su canto era tan dulce que se detuvieron a escucharlo.",
-          },
+          { text: "Un precioso pájaro blanco se posó en una rama. Su canto era tan dulce que se detuvieron a escucharlo." },
         ],
       },
       {
@@ -489,8 +467,7 @@ export const STORY_SECTIONS: StorySection[] = [
         audio: { soundFx: "/sounds/magic-sparkle.mp3", volume: 0.5 },
         narrationSrc: "/narration/s08-b.mp3",
         dialogues: [
-          { text: "Cuando terminó de cantar, levantó el vuelo." },
-          { text: "Los niños lo siguieron sin dudar." },
+          { text: "Cuando terminó de cantar, levantó el vuelo. Los niños lo siguieron sin dudar." },
         ],
       },
       {
