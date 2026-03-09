@@ -108,7 +108,7 @@ export function InteractivePinnedSection({
     const lenis = getLenis();
     if (lenis) {
       // Reset lenis target to current position before resuming to prevent auto-jump
-      lenis.scrollTo(window.scrollY, { immediate: true });
+      lenis.scrollTo(window.scrollY, { immediate: true, force: true });
       lenis.start();
     } else {
       document.body.style.overflow = "";
@@ -358,7 +358,17 @@ export function InteractivePinnedSection({
             scrub: true,
             anticipatePin: 1,
             snap: {
-              snapTo: [0, 0.5, 0.9, 1],
+              snapTo: (value: number) => {
+                const snaps = [0, 0.5, 0.9, 1];
+                // Prevent skipping unplayed frames: limit snap to next allowed position
+                const nextIdx = Math.max(0, maxFrameReachedRef.current + 1);
+                const maxAllowed = snaps[Math.min(nextIdx, snaps.length - 1)];
+                const allowed = snaps.filter((s) => s <= maxAllowed + 0.001);
+                return allowed.reduce((nearest, s) =>
+                  Math.abs(s - value) < Math.abs(nearest - value) ? s : nearest,
+                  allowed[0]
+                );
+              },
               duration: { min: 0.4, max: 1 },
               delay: 0.2,
               ease: "power2.inOut",
@@ -371,7 +381,7 @@ export function InteractivePinnedSection({
               };
             },
             onSnapComplete: (self) => {
-              // Snap has finished — image is now fully centered. Safe to lock and narrate.
+              // Fires after snap animation ends — scroll is settled, safe to lock.
               const progress = self.progress;
               let frameIndex = 0;
               if (progress >= 0.7) frameIndex = 2;
