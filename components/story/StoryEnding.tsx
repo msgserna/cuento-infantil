@@ -48,23 +48,49 @@ export function StoryEnding() {
 
   return (
     <section ref={rootRef} className="relative flex story-viewport w-full flex-col items-center justify-center overflow-hidden bg-black px-6">
-      {/* Subtle radial gradient background */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(139,90,43,0.12)_0%,_transparent_70%)]" />
+      {/* Background image */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url(/story/hg/outro.webp)" }}
+      />
+      {/* Dark overlay for readability */}
+      <div className="pointer-events-none absolute inset-0 bg-black/50" />
 
-      {/* Stars / sparkle dots */}
+      {/* Luciérnagas */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {Array.from({ length: 20 }).map((_, i) => (
+        {[
+          { top: 18, left: 12, dur: 3.2, delay: 0,   fx: 6,  fy: -8,  size: 3 },
+          { top: 35, left: 28, dur: 4.1, delay: 0.7, fx: -5, fy: 6,   size: 2.5 },
+          { top: 55, left: 8,  dur: 3.7, delay: 1.2, fx: 8,  fy: -5,  size: 3.5 },
+          { top: 22, left: 55, dur: 4.5, delay: 0.3, fx: -7, fy: 9,   size: 2 },
+          { top: 68, left: 42, dur: 3.0, delay: 1.8, fx: 5,  fy: -7,  size: 3 },
+          { top: 14, left: 80, dur: 4.8, delay: 0.5, fx: -6, fy: 5,   size: 2.5 },
+          { top: 80, left: 72, dur: 3.4, delay: 2.1, fx: 7,  fy: -6,  size: 3 },
+          { top: 44, left: 65, dur: 5.0, delay: 0.9, fx: -4, fy: 8,   size: 2 },
+          { top: 60, left: 85, dur: 3.6, delay: 1.5, fx: 6,  fy: -4,  size: 3.5 },
+          { top: 30, left: 92, dur: 4.2, delay: 2.4, fx: -8, fy: 6,   size: 2.5 },
+          { top: 75, left: 20, dur: 3.9, delay: 0.2, fx: 5,  fy: 7,   size: 3 },
+          { top: 48, left: 48, dur: 4.6, delay: 1.1, fx: -6, fy: -5,  size: 2 },
+          { top: 88, left: 55, dur: 3.3, delay: 2.7, fx: 7,  fy: -8,  size: 3.5 },
+          { top: 10, left: 38, dur: 4.0, delay: 0.6, fx: -5, fy: 6,   size: 2.5 },
+          { top: 65, left: 30, dur: 5.2, delay: 1.9, fx: 8,  fy: -5,  size: 2 },
+          { top: 25, left: 70, dur: 3.8, delay: 3.0, fx: -7, fy: 7,   size: 3 },
+          { top: 82, left: 88, dur: 4.3, delay: 0.4, fx: 5,  fy: -6,  size: 2.5 },
+          { top: 52, left: 18, dur: 3.5, delay: 2.2, fx: -6, fy: 5,   size: 3 },
+        ].map((f, i) => (
           <span
             key={i}
-            className="absolute rounded-full bg-white/20"
+            className="firefly absolute rounded-full bg-[#c8ff50]"
             style={{
-              width: `${1 + Math.random() * 2}px`,
-              height: `${1 + Math.random() * 2}px`,
-              top: `${10 + Math.random() * 80}%`,
-              left: `${5 + Math.random() * 90}%`,
-              animation: `pulse ${2 + Math.random() * 3}s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 3}s`,
-            }}
+              width: `${f.size}px`,
+              height: `${f.size}px`,
+              top: `${f.top}%`,
+              left: `${f.left}%`,
+              "--duration": `${f.dur}s`,
+              "--delay": `${f.delay}s`,
+              "--fx": `${f.fx}px`,
+              "--fy": `${f.fy}px`,
+            } as React.CSSProperties}
           />
         ))}
       </div>
