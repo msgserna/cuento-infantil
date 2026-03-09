@@ -106,8 +106,13 @@ export function InteractivePinnedSection({
     scrollLockedRef.current = false;
     lockReasonRef.current = null;
     const lenis = getLenis();
-    if (lenis) lenis.start();
-    else document.body.style.overflow = "";
+    if (lenis) {
+      // Reset lenis target to current position before resuming to prevent auto-jump
+      lenis.scrollTo(window.scrollY, { immediate: true });
+      lenis.start();
+    } else {
+      document.body.style.overflow = "";
+    }
   }, []);
 
   const skipNarration = useCallback(() => {
