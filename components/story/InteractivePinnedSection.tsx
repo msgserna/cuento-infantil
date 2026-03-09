@@ -176,6 +176,10 @@ export function InteractivePinnedSection({
       if (lenis) lenis.stop();
       else document.body.style.overflow = "hidden";
 
+      // Preload next frame's narration while current plays
+      const nextSrc = frames[frameIndex + 1]?.narrationSrc;
+      if (nextSrc) audioManager.loadSound(nextSrc);
+
       audioManager.play(src, 1).then((node) => {
         if (!node) {
           unlockScroll();
@@ -271,11 +275,6 @@ export function InteractivePinnedSection({
 
     setTimeout(() => {
       setShowPrompt(false);
-
-      if (shouldAdvance && interaction.afterFrame < 2) {
-        maxFrameReachedRef.current = interaction.afterFrame + 1;
-      }
-
       unlockScroll();
 
       if (shouldAdvance) {

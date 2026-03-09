@@ -82,6 +82,10 @@ export function PinnedSection({
       if (lenis) lenis.stop();
       else document.body.style.overflow = "hidden";
 
+      // Preload next frame's narration while current plays
+      const nextSrc = frames[frameIndex + 1]?.narrationSrc;
+      if (nextSrc) audioManager.loadSound(nextSrc);
+
       audioManager.play(src, 1).then((node) => {
         if (!node) {
           unlockScroll();
