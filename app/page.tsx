@@ -19,7 +19,7 @@ const INTERACTIONS: Record<string, Interaction> = {
     afterFrame: 2, // Frame C (niños solos junto al fuego)
     prompt: "Toca para escuchar la rama",
     icon: "branch",
-    soundFx: "/sounds/fire-crackle.mp3",
+    soundFx: "/sounds/axe-chop.mp3",
     soundVolume: 0.6,
     visualEffect: "swing",
     autoAdvanceMs: 1500,
@@ -30,7 +30,7 @@ const INTERACTIONS: Record<string, Interaction> = {
     afterFrame: 0, // Frame A (Gretel empuja a la bruja)
     prompt: "Toca para empujar a la bruja",
     icon: "push",
-    soundFx: "/sounds/fire-crackle.mp3",
+    soundFx: "/sounds/fire-oven.mp3",
     soundVolume: 0.8,
     visualEffect: "shake",
     autoAdvanceMs: 2000,

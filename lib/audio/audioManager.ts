@@ -78,7 +78,8 @@ class AudioManager {
   async play(
     url: string,
     volume: number = 1,
-    delay: number = 0
+    delay: number = 0,
+    loop: boolean = false
   ): Promise<AudioBufferSourceNode | null> {
     try {
       await this.init();
@@ -90,6 +91,7 @@ class AudioManager {
 
       const source = this.audioContext!.createBufferSource();
       source.buffer = buffer;
+      source.loop = loop;
 
       const gain = this.audioContext!.createGain();
       gain.gain.value = volume;

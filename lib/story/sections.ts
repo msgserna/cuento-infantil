@@ -43,6 +43,17 @@ export type Frame = {
     left: string;
     size: string;
     glowColor: string;
+    autoGlow?: boolean;
+  }>;
+
+  // Puntos de brillo estáticos tipo sparkle (piedras brillantes, luna, etc.)
+  sparkles?: Array<{
+    top: string;
+    left: string;
+    size: number;       // px
+    color: string;      // rgba
+    delay: number;      // s — desfase de la animación
+    type?: "moon";      // si es luna, glow más grande
   }>;
 };
 
@@ -86,11 +97,11 @@ export const STORY_SECTIONS: StorySection[] = [
           lightIntensity: 0.15,
           parallaxIntensity: 0.3,
         },
-        audio: { soundFx: "/sounds/sad-wind.mp3", volume: 0.3 },
+        audio: { soundFx: "/sounds/sad-wind.mp3", volume: 0.15 },
         narrationSrc: "/narration/s02-a.mp3",
         dialogues: [
           {
-            text: "Había una vez un leñador muy pobre que vivía junto a un enorme bosque con su esposa y sus dos hijos.",
+            text: "Había una vez un leñador muy pobre que vivía junto a un enorme bosque con su esposa y sus dos hijos: el niño se llamaba Hänsel y la niña, Gretel.",
           },
         ],
       },
@@ -101,7 +112,8 @@ export const STORY_SECTIONS: StorySection[] = [
           lightIntensity: 0.2,
           parallaxIntensity: 0.3,
         },
-        audio: { soundFx: "/sounds/sad-wind.mp3", volume: 0.25 },
+        audio: { soundFx: "/sounds/sad-wind.mp3", volume: 0.12 },
+        narrationSrc: "/narration/s02-b.mp3",
         dialogues: [
           {
             speaker: "Madrastra",
@@ -121,15 +133,12 @@ export const STORY_SECTIONS: StorySection[] = [
           lightIntensity: 0.2,
           parallaxIntensity: 0.3,
         },
-        audio: { soundFx: "/sounds/tension.mp3", volume: 0.35 },
+        audio: { soundFx: "/sounds/tension.mp3", volume: 0.15 },
         narrationSrc: "/narration/s02-c.mp3",
         dialogues: [
           {
             speaker: "Madrastra",
             text: "Entonces, ¿nos morimos de hambre los cuatro?",
-          },
-          {
-            text: "Y no lo dejó tranquilo hasta que consiguió convencerlo.",
           },
         ],
       },
@@ -151,10 +160,10 @@ export const STORY_SECTIONS: StorySection[] = [
           particleType: "snow",
           parallaxIntensity: 0.5,
         },
-        audio: { soundFx: "/sounds/night-crickets.mp3", volume: 0.4 },
+        audio: { soundFx: "/sounds/night-crickets.mp3", volume: 0.2 },
         narrationSrc: "/narration/s03-a.mp3",
         dialogues: [
-          { text: "Los niños no podían dormirse. Lo habían oído todo. Gretel lloraba en silencio." },
+          { text: "Pero los niños no podían dormirse. Lo habían oído todo. Gretel lloraba en silencio, pero Hänsel tuvo una idea." },
         ],
       },
       {
@@ -166,11 +175,11 @@ export const STORY_SECTIONS: StorySection[] = [
           particleType: "snow",
           parallaxIntensity: 0.6,
         },
-        audio: { soundFx: "/sounds/night-crickets.mp3", volume: 0.35 },
+        audio: { soundFx: "/sounds/night-crickets.mp3", volume: 0.15 },
         narrationSrc: "/narration/s03-b.mp3",
         dialogues: [
           {
-            text: "Era noche de luna llena. Las piedrecitas brillaban como si fueran de plata. Hänsel se agachó y cogió cuantas le cabían en los bolsillos.",
+            text: "Hänsel se escabulló fuera de la casa. Era noche de luna llena y las piedrecitas blancas del suelo brillaban como si fueran de plata. Recogió cuantas le cabían en los bolsillos.",
           },
         ],
         hotspots: [
@@ -193,9 +202,10 @@ export const STORY_SECTIONS: StorySection[] = [
         },
         audio: {
           soundFx: "/sounds/magic-sparkle.mp3",
-          volume: 0.5,
+          volume: 0.2,
           delay: 400,
         },
+        narrationSrc: "/narration/s03-c.mp3",
         dialogues: [
           {
             speaker: "Hänsel",
@@ -221,10 +231,9 @@ export const STORY_SECTIONS: StorySection[] = [
           particleType: "leaves",
           parallaxIntensity: 0.4,
         },
-        audio: { soundFx: "/sounds/forest-wind.mp3", volume: 0.4 },
         narrationSrc: "/narration/s04-a.mp3",
         dialogues: [
-          { text: "Al amanecer emprendieron la marcha, Hänsel se detenía cada poco… para dejar caer una piedrecita blanca." },
+          { text: "Al amanecer, la madrastra los despertó y emprendieron la marcha hacia el bosque. Hänsel se detenía cada poco para dejar caer una piedrecita blanca en el camino." },
         ],
       },
       {
@@ -235,7 +244,8 @@ export const STORY_SECTIONS: StorySection[] = [
           particleType: "sparks",
           parallaxIntensity: 0.5,
         },
-        audio: { soundFx: "/sounds/fire-crackle.mp3", volume: 0.5 },
+        audio: { soundFx: "/sounds/fire-crackle.mp3", volume: 0.2 },
+        narrationSrc: "/narration/s04-b.mp3",
         dialogues: [
           {
             speaker: "Madrastra",
@@ -252,11 +262,11 @@ export const STORY_SECTIONS: StorySection[] = [
           particleType: "sparks",
           parallaxIntensity: 0.4,
         },
-        audio: { soundFx: "/sounds/fire-crackle.mp3", volume: 0.4 },
+        audio: { soundFx: "/sounds/fire-crackle.mp3", volume: 0.18 },
         narrationSrc: "/narration/s04-c.mp3",
         dialogues: [
           {
-            text: "Oían los golpes del hacha… pero era solo una rama golpeando al viento,y se quedaron dormidos.",
+            text: "Hänsel y Gretel esperaron junto al fuego. Oían los golpes del hacha, pero en realidad era solo una rama que golpeaba contra un tronco. Poco a poco se quedaron dormidos.",
           },
         ],
       },
@@ -277,10 +287,9 @@ export const STORY_SECTIONS: StorySection[] = [
           particleType: "snow",
           parallaxIntensity: 0.5,
         },
-        audio: { soundFx: "/sounds/night-crickets.mp3", volume: 0.35 },
+        audio: { soundFx: "/sounds/night-crickets.mp3", volume: 0.15 },
         narrationSrc: "/narration/s05-a.mp3",
         dialogues: [
-          { text: "Cuando despertaron era noche cerrada." },
           {
             speaker: "Hänsel",
             text: "Espera a que la luna esté en lo alto y encontraremos el camino.",
@@ -295,11 +304,33 @@ export const STORY_SECTIONS: StorySection[] = [
           particleType: "snow",
           parallaxIntensity: 0.6,
         },
-        audio: { soundFx: "/sounds/magic-sparkle.mp3", volume: 0.5 },
+        audio: { soundFx: "/sounds/magic-sparkle.mp3", volume: 0.2 },
         narrationSrc: "/narration/s05-b.mp3",
+        sparkles: [
+          // Luna
+          { top: "14%", left: "40%", size: 6, color: "rgba(200, 220, 255, 0.6)", delay: 0, type: "moon" },
+          // Piedrecitas — de abajo (pies de los niños) hacia arriba por el camino
+          // Zona baja del camino (cerca de los niños, ~55% left)
+          { top: "75%", left: "52%", size: 3, color: "rgba(210, 230, 255, 0.7)", delay: 0.2 },
+          { top: "73%", left: "48%", size: 2.5, color: "rgba(200, 220, 255, 0.6)", delay: 1.1 },
+          { top: "71%", left: "55%", size: 2, color: "rgba(220, 235, 255, 0.7)", delay: 0.7 },
+          // Zona media-baja (curva hacia la izquierda, ~45-50% left)
+          { top: "67%", left: "46%", size: 3, color: "rgba(210, 230, 255, 0.65)", delay: 1.8 },
+          { top: "65%", left: "50%", size: 2.5, color: "rgba(200, 220, 255, 0.6)", delay: 0.4 },
+          { top: "62%", left: "44%", size: 2, color: "rgba(220, 235, 255, 0.7)", delay: 1.4 },
+          // Zona media (centro del camino, ~40-45% left)
+          { top: "58%", left: "42%", size: 3, color: "rgba(210, 230, 255, 0.7)", delay: 2.2 },
+          { top: "55%", left: "45%", size: 2.5, color: "rgba(200, 215, 255, 0.55)", delay: 0.9 },
+          { top: "52%", left: "40%", size: 2, color: "rgba(220, 235, 255, 0.65)", delay: 1.6 },
+          // Zona alta del camino (se aleja, ~35-40% left)
+          { top: "48%", left: "38%", size: 2.5, color: "rgba(210, 230, 255, 0.6)", delay: 0.3 },
+          { top: "45%", left: "41%", size: 2, color: "rgba(200, 220, 255, 0.55)", delay: 2.0 },
+          { top: "42%", left: "37%", size: 2.5, color: "rgba(220, 235, 255, 0.7)", delay: 0.6 },
+          { top: "39%", left: "39%", size: 2, color: "rgba(200, 215, 255, 0.5)", delay: 1.3 },
+        ],
         dialogues: [
           {
-            text: "Las piedrecitas brillaban bajo la luna, señalando el camino de vuelta. Caminaron durante toda la noche.",
+            text: "Cuando salió la luna, las piedrecitas de Hänsel brillaron como monedas de plata, señalando el camino de vuelta. Caminaron durante toda la noche siguiendo aquel rastro luminoso.",
           },
         ],
       },
@@ -311,10 +342,10 @@ export const STORY_SECTIONS: StorySection[] = [
           lightIntensity: 0.25,
           parallaxIntensity: 0.3,
         },
-        audio: { soundFx: "/sounds/forest-birds.mp3", volume: 0.4 },
+        audio: { soundFx: "/sounds/forest-birds.mp3", volume: 0.18 },
         narrationSrc: "/narration/s05-c.mp3",
         dialogues: [
-          { text: "Al amanecer, la casa apareció al fin, el leñador se alegró muchísimo de verlos. Su conciencia no le había dejado dormir." },
+          { text: "Al amanecer, la casa apareció al fin entre los árboles. El padre se alegró muchísimo de verlos, pues su conciencia no le había dejado dormir ni un solo instante." },
         ],
       },
     ],
@@ -333,13 +364,10 @@ export const STORY_SECTIONS: StorySection[] = [
           lightIntensity: 0.2,
           parallaxIntensity: 0.3,
         },
-        audio: { soundFx: "/sounds/sad-wind.mp3", volume: 0.3 },
+        audio: { soundFx: "/sounds/sad-wind.mp3", volume: 0.15 },
         narrationSrc: "/narration/s06-a.mp3",
         dialogues: [
-          { text: "Pero los tiempos de escasez no habían pasado." },
-          {
-            text: "Desde su cama, los niños volvieron a oír la misma conversación.",
-          },
+          { text: "Pero los tiempos de escasez no habían pasado. Una noche, los niños volvieron a oír desde la cama la misma conversación de siempre." },
         ],
       },
       {
@@ -349,7 +377,7 @@ export const STORY_SECTIONS: StorySection[] = [
           lightIntensity: 0.25,
           parallaxIntensity: 0.3,
         },
-        audio: { soundFx: "/sounds/tension.mp3", volume: 0.3 },
+        audio: { soundFx: "/sounds/tension.mp3", volume: 0.15 },
         narrationSrc: "/narration/s06-b.mp3",
         dialogues: [
           {
@@ -369,13 +397,11 @@ export const STORY_SECTIONS: StorySection[] = [
           particleType: "leaves",
           parallaxIntensity: 0.4,
         },
-        audio: { soundFx: "/sounds/forest-wind.mp3", volume: 0.35 },
         narrationSrc: "/narration/s06-c.mp3",
         dialogues: [
           {
-            text: "Recibieron un trozo de pan, más pequeño que la vez anterior.",
+            text: "A la mañana siguiente les dieron un trozo de pan aún más pequeño que la vez anterior. En el camino hacia el bosque, Hänsel fue desmigajándolo a escondidas y dejando las migajas en el suelo.",
           },
-          { text: "En el camino, Hänsel lo desmigajó a escondidas." },
         ],
       },
     ],
@@ -394,10 +420,10 @@ export const STORY_SECTIONS: StorySection[] = [
           lightIntensity: 0.2,
           parallaxIntensity: 0.4,
         },
-        audio: { soundFx: "/sounds/night-crickets.mp3", volume: 0.3 },
+        audio: { soundFx: "/sounds/night-crickets.mp3", volume: 0.15 },
         narrationSrc: "/narration/s07-a.mp3",
         dialogues: [
-          { text: "Cuando salió la luna… las migas habían desaparecido. Los pájaros del bosque se las habían comido todas." },
+          { text: "Cuando salió la luna y Hänsel buscó las migas, habían desaparecido. Miles de pájaros del bosque se las habían comido todas." },
         ],
       },
       {
@@ -408,11 +434,11 @@ export const STORY_SECTIONS: StorySection[] = [
           particleType: "rain",
           parallaxIntensity: 0.5,
         },
-        audio: { soundFx: "/sounds/rain.mp3", volume: 0.5 },
+        audio: { soundFx: "/sounds/rain.mp3", volume: 0.2 },
         narrationSrc: "/narration/s07-b.mp3",
         dialogues: [
           {
-            text: "Anduvieron durante toda la noche y todo el día siguiente. No pudieron encontrar un camino para salir del bosque.",
+            text: "Anduvieron durante toda la noche y todo el día siguiente sin encontrar un camino para salir de aquel bosque interminable. Solo encontraban raíces y bayas para comer.",
           },
         ],
       },
@@ -425,11 +451,11 @@ export const STORY_SECTIONS: StorySection[] = [
           particleType: "rain",
           parallaxIntensity: 0.4,
         },
-        audio: { soundFx: "/sounds/rain.mp3", volume: 0.45 },
+        audio: { soundFx: "/sounds/rain.mp3", volume: 0.18 },
         narrationSrc: "/narration/s07-c.mp3",
         dialogues: [
           {
-            text: "Al final del día, sus piernas se negaban a sostenerlos. Se tumbaron debajo de un árbol y se durmieron.",
+            text: "Al final del tercer día, sus piernas se negaban a sostenerlos. Se tumbaron debajo de un árbol y se durmieron, exhaustos y sin esperanza.",
           },
         ],
       },
@@ -450,10 +476,10 @@ export const STORY_SECTIONS: StorySection[] = [
           particleType: "snow",
           parallaxIntensity: 0.5,
         },
-        audio: { soundFx: "/sounds/forest-birds.mp3", volume: 0.45 },
+        audio: { soundFx: "/sounds/forest-birds.mp3", volume: 0.2 },
         narrationSrc: "/narration/s08-a.mp3",
         dialogues: [
-          { text: "Un precioso pájaro blanco se posó en una rama. Su canto era tan dulce que se detuvieron a escucharlo." },
+          { text: "Al amanecer, un precioso pájaro blanco como la nieve se posó en una rama cercana. Su canto era tan dulce y hermoso que los niños se detuvieron a escucharlo, hipnotizados." },
         ],
       },
       {
@@ -464,10 +490,10 @@ export const STORY_SECTIONS: StorySection[] = [
           particleType: "sparks",
           parallaxIntensity: 0.5,
         },
-        audio: { soundFx: "/sounds/magic-sparkle.mp3", volume: 0.5 },
+        audio: { soundFx: "/sounds/magic-sparkle.mp3", volume: 0.2 },
         narrationSrc: "/narration/s08-b.mp3",
         dialogues: [
-          { text: "Cuando terminó de cantar, levantó el vuelo. Los niños lo siguieron sin dudar." },
+          { text: "Cuando terminó de cantar, el pájaro levantó el vuelo. Los niños lo siguieron sin dudar, como si algo les dijera que debían confiar en él." },
         ],
       },
       {
@@ -478,7 +504,7 @@ export const STORY_SECTIONS: StorySection[] = [
           particleType: "sparks",
           parallaxIntensity: 0.5,
         },
-        audio: { soundFx: "/sounds/fire-crackle.mp3", volume: 0.4 },
+        audio: { soundFx: "/sounds/fire-crackle.mp3", volume: 0.18 },
         narrationSrc: "/narration/s08-c.mp3",
         dialogues: [
           {
@@ -508,7 +534,7 @@ export const STORY_SECTIONS: StorySection[] = [
           parallaxIntensity: 0.4,
           blur: 0.5,
         },
-        audio: { soundFx: "/sounds/tension.mp3", volume: 0.45 },
+        audio: { soundFx: "/sounds/tension.mp3", volume: 0.2 },
         narrationSrc: "/narration/s09-a.mp3",
         dialogues: [
           {
@@ -527,7 +553,7 @@ export const STORY_SECTIONS: StorySection[] = [
           lightIntensity: 0.3,
           parallaxIntensity: 0.4,
         },
-        audio: { soundFx: "/sounds/magic-sparkle.mp3", volume: 0.35, delay: 300 },
+        audio: { soundFx: "/sounds/magic-sparkle.mp3", volume: 0.15, delay: 300 },
         narrationSrc: "/narration/s09-b.mp3",
         dialogues: [
           {
@@ -548,7 +574,7 @@ export const STORY_SECTIONS: StorySection[] = [
           particleType: "sparks",
           parallaxIntensity: 0.5,
         },
-        audio: { soundFx: "/sounds/tension.mp3", volume: 0.5 },
+        audio: { soundFx: "/sounds/tension.mp3", volume: 0.2 },
         narrationSrc: "/narration/s09-c.mp3",
         dialogues: [
           {
@@ -575,7 +601,8 @@ export const STORY_SECTIONS: StorySection[] = [
           particleType: "sparks",
           parallaxIntensity: 0.6,
         },
-        audio: { soundFx: "/sounds/fire-crackle.mp3", volume: 0.6 },
+        audio: { soundFx: "/sounds/fire-crackle.mp3", volume: 0.25 },
+        narrationSrc: "/narration/s10-a.mp3",
         dialogues: [
           { speaker: "Gretel", text: "¿Cómo entro?" },
           {
@@ -593,13 +620,12 @@ export const STORY_SECTIONS: StorySection[] = [
           particleType: "sparks",
           parallaxIntensity: 0.5,
         },
-        audio: { soundFx: "/sounds/magic-sparkle.mp3", volume: 0.5 },
+        audio: { soundFx: "/sounds/fire-oven.mp3", volume: 0.25 },
         narrationSrc: "/narration/s10-b.mp3",
         dialogues: [
           {
-            text: "Gretel cerró la puerta de hierro y corrió el cerrojo.",
+            text: "En ese instante, Gretel la empujó con todas sus fuerzas dentro del horno y cerró la puerta de hierro. Después corrió al establo y liberó a su hermano.",
           },
-          { text: "Salió corriendo a buscar a su hermano." },
         ],
       },
       {
@@ -609,7 +635,7 @@ export const STORY_SECTIONS: StorySection[] = [
           lightIntensity: 0.3,
           parallaxIntensity: 0.4,
         },
-        audio: { soundFx: "/sounds/forest-birds.mp3", volume: 0.45 },
+        audio: { soundFx: "/sounds/forest-birds.mp3", volume: 0.2 },
         narrationSrc: "/narration/s10-c.mp3",
         dialogues: [
           {
@@ -642,7 +668,7 @@ export const STORY_SECTIONS: StorySection[] = [
           particleType: "sparks",
           parallaxIntensity: 0.5,
         },
-        audio: { soundFx: "/sounds/fire-crackle.mp3", volume: 0.5 },
+        audio: { soundFx: "/sounds/fire-crackle.mp3", volume: 0.2 },
         narrationSrc: "/narration/s11-a.mp3",
         dialogues: [
           {
@@ -659,7 +685,7 @@ export const STORY_SECTIONS: StorySection[] = [
           lightIntensity: 0.35,
           parallaxIntensity: 0.5,
         },
-        audio: { soundFx: "/sounds/forest-birds.mp3", volume: 0.45 },
+        audio: { soundFx: "/sounds/forest-birds.mp3", volume: 0.2 },
         narrationSrc: "/narration/s11-b.mp3",
         dialogues: [
           { text: "Un gran lago les cortó el paso... cruzaron el lago sobre el lomo de un gran pato." },
@@ -677,14 +703,11 @@ export const STORY_SECTIONS: StorySection[] = [
           particleType: "sparks",
           parallaxIntensity: 0.3,
         },
-        audio: { soundFx: "/sounds/magic-sparkle.mp3", volume: 0.5 },
+        audio: { soundFx: "/sounds/magic-sparkle.mp3", volume: 0.2 },
         narrationSrc: "/narration/s11-c.mp3",
         dialogues: [
           {
-            text: "Gretel sacudió su delantal y las perlas rodaron por la estancia.",
-          },
-          {
-            text: "Terminaron sus penurias y pudieron vivir felices para siempre.",
+            text: "Gretel sacudió su delantal y las perlas rodaron por el suelo. Terminaron sus penurias y pudieron vivir felices para siempre.",
           },
         ],
       },

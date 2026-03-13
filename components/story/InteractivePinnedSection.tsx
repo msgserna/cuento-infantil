@@ -80,6 +80,11 @@ export function InteractivePinnedSection({
 
   // Narration playback
   const narrationRef = useRef<AudioBufferSourceNode | null>(null);
+
+  // Sound effect playback (looped ambient)
+  const activeSfxRef = useRef<AudioBufferSourceNode | null>(null);
+  const activeSfxFrameRef = useRef<number>(-1);
+
   // Track which frame is currently visible (for prompt guard)
   const [visibleFrame, setVisibleFrame] = useState(0);
 
@@ -100,6 +105,35 @@ export function InteractivePinnedSection({
       narrationRef.current = null;
     }
   }, []);
+
+  const stopSfx = useCallback(() => {
+    if (activeSfxRef.current) {
+      try {
+        activeSfxRef.current.stop();
+      } catch {
+        // already stopped
+      }
+      activeSfxRef.current = null;
+    }
+  }, []);
+
+  const playSfxForFrame = useCallback(
+    (frameIndex: number) => {
+      if (activeSfxFrameRef.current === frameIndex) return;
+      stopSfx();
+      activeSfxFrameRef.current = frameIndex;
+
+      const frame = frames[frameIndex];
+      if (!frame?.audio?.soundFx) return;
+
+      audioManager
+        .play(frame.audio.soundFx, frame.audio.volume ?? 0.2, frame.audio.delay ?? 0, true)
+        .then((src) => {
+          if (src) activeSfxRef.current = src;
+        });
+    },
+    [frames, stopSfx]
+  );
 
   const unlockScroll = useCallback(() => {
     if (!scrollLockedRef.current) return;
@@ -322,9 +356,6 @@ export function InteractivePinnedSection({
     if (frames.length < 2) return;
 
     let ctx: { revert: () => void } | undefined;
-    const soundSourcesRef = {
-      current: new Map<number, AudioBufferSourceNode>(),
-    };
 
     (async () => {
       const gsap = (await import("gsap")).default;
@@ -380,9 +411,14 @@ export function InteractivePinnedSection({
               };
             },
             onLeave: (self) => {
-              // Snap to the exact end of this section (= start of next section)
+              stopSfx();
+              activeSfxFrameRef.current = -1;
               const lenis = getLenis();
               if (lenis) lenis.scrollTo(self.end, { duration: 0.3, force: true });
+            },
+            onLeaveBack: () => {
+              stopSfx();
+              activeSfxFrameRef.current = -1;
             },
             onEnterBack: (self) => {
               // Snap back to just inside this section's last frame
@@ -423,46 +459,13 @@ export function InteractivePinnedSection({
               }
               setVisibleFrame(bestFrame);
 
-              // Audio triggers
+              // Determine current frame from progress and play its looped SFX
               const progress = self.progress;
-              if (
-                progress > 0.15 &&
-                progress < 0.35 &&
-                !soundSourcesRef.current.has(0)
-              ) {
-                audioManager
-                  .play(
-                    frames[0].audio?.soundFx || "",
-                    frames[0].audio?.volume || 0.5
-                  )
-                  .then((src) => {
-                    if (src) soundSourcesRef.current.set(0, src);
-                  });
-              }
-              if (
-                progress > 0.5 &&
-                progress < 0.7 &&
-                !soundSourcesRef.current.has(1)
-              ) {
-                audioManager
-                  .play(
-                    frames[1].audio?.soundFx || "",
-                    frames[1].audio?.volume || 0.5
-                  )
-                  .then((src) => {
-                    if (src) soundSourcesRef.current.set(1, src);
-                  });
-              }
-              if (progress > 0.75 && !soundSourcesRef.current.has(2)) {
-                audioManager
-                  .play(
-                    frames[2].audio?.soundFx || "",
-                    frames[2].audio?.volume || 0.5
-                  )
-                  .then((src) => {
-                    if (src) soundSourcesRef.current.set(2, src);
-                  });
-              }
+              let currentFrame = 0;
+              if (progress >= 0.7) currentFrame = 2;
+              else if (progress >= 0.25) currentFrame = 1;
+
+              playSfxForFrame(currentFrame);
             },
           },
         });
@@ -497,7 +500,8 @@ export function InteractivePinnedSection({
 
     return () => {
       if (ctx) ctx.revert();
-      soundSourcesRef.current.clear();
+      stopSfx();
+      activeSfxFrameRef.current = -1;
       scrollTriggerRef.current = null;
       maxFrameReachedRef.current = -1;
       hasInteractedRef.current = false;
@@ -513,7 +517,7 @@ export function InteractivePinnedSection({
         scrollLockedRef.current = false;
       }
     };
-  }, [frames, frames.length, pinScrollLength, lockForFrame]);
+  }, [frames, frames.length, pinScrollLength, lockForFrame, playSfxForFrame, stopSfx]);
 
   // Icon rendering
   const renderIcon = () => {
@@ -613,6 +617,21 @@ export function InteractivePinnedSection({
             )}
             {frame.hotspots?.map((hotspot) => (
               <HoverGlow key={hotspot.id} hotspot={hotspot} />
+            ))}
+            {frame.sparkles?.map((s, idx) => (
+              <span
+                key={idx}
+                className="pointer-events-none absolute rounded-full"
+                style={{
+                  top: s.top,
+                  left: s.left,
+                  width: `${s.size}px`,
+                  height: `${s.size}px`,
+                  backgroundColor: s.color,
+                  "--sparkle-color": s.color,
+                  animation: `${s.type === "moon" ? "moon-glow" : "sparkle-twinkle"} ${s.type === "moon" ? "4s" : "2.5s"} ease-in-out infinite ${s.delay}s`,
+                } as React.CSSProperties}
+              />
             ))}
           </div>
         ))}

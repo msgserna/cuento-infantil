@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import type { StorySection as StorySectionType } from "@/lib/story/sections";
+import { STORY_SECTIONS } from "@/lib/story/sections";
 import { audioManager } from "@/lib/audio/audioManager";
 
 type Props = {
@@ -63,6 +64,15 @@ export function StorySection({ section, className }: Props) {
     await audioManager.init();
     audioManager.playNarration("/narration/intro.mp3", 1);
     setStarted(true);
+
+    // Precargar audios de las primeras secciones tras inicializar AudioContext
+    const firstSections = STORY_SECTIONS.slice(1, 3);
+    for (const s of firstSections) {
+      for (const f of s.frames) {
+        if (f.narrationSrc) audioManager.loadSound(f.narrationSrc);
+        if (f.audio?.soundFx) audioManager.loadSound(f.audio.soundFx);
+      }
+    }
   }, []);
 
   return (
